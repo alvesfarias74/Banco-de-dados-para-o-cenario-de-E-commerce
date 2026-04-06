@@ -100,7 +100,7 @@ LEFT JOIN storageLocation sl ON p.idProduct = sl.idLproduct
 LEFT JOIN productStorage pst ON sl.idLstorage = pst.idProdStorage;
 ```
 
-##✨ Versão 2: Finest E-Commerce (Refinado)
+## ✨ Versão 2: Finest E-Commerce (Refinado)
 
 Melhorias Implementadas
 O banco finest_ecommerce é uma evolução do primeiro modelo, aplicando melhores práticas de modelagem e refinamentos solicitados no desafio:
@@ -113,7 +113,7 @@ Entrega	Sem rastreamento	Código de rastreio e status detalhado
 Validações	Básicas	CHECK constraints (CPF/CNPJ)
 Novas Funcionalidades
 
-###1. Cliente PF e PJ
+### 1. Cliente PF e PJ
 ```sql
 CREATE TABLE clients (
     idClient INT AUTO_INCREMENT PRIMARY KEY,
@@ -130,7 +130,7 @@ CREATE TABLE clients (
     )
 );
 ```
-###2. Múltiplas Formas de Pagamento
+### 2. Múltiplas Formas de Pagamento
 ```sql
 CREATE TABLE payment (
     idPayment INT AUTO_INCREMENT PRIMARY KEY,
@@ -142,7 +142,7 @@ CREATE TABLE payment (
     FOREIGN KEY (idClient) REFERENCES clients(idClient)
 );
 ```
-###3. Entrega com Rastreamento
+### 3. Entrega com Rastreamento
 sql
 CREATE TABLE orders (
     idOrder INT AUTO_INCREMENT PRIMARY KEY,
