@@ -44,7 +44,9 @@ O primeiro banco de dados (`ecommerce`) foi desenvolvido para atender às necess
 
 ### Diagrama ER
 
-![Diagrama ER - E-Commerce Base](images/ecommerce_er.png)
+![Diagrama ER - E-Commerce Base](images/e-commerce.png)
+![Diagrama ER - E-Commerce Reproduzido](images/e-commerce_by_alves.png)
+![Diagrama ER - E-Commerce Refinado](images/finest_e-commerce_by_alves.png)
 
 ### Características
 
@@ -88,6 +90,8 @@ JOIN productSupplier ps ON p.idProduct = ps.idPsProduct
 JOIN supplier s ON ps.idPsSupplier = s.idSupplier
 LEFT JOIN storageLocation sl ON p.idProduct = sl.idLproduct
 LEFT JOIN productStorage pst ON sl.idLstorage = pst.idProdStorage;
+
+
 ✨ Versão 2: Finest E-Commerce (Refinado)
 Melhorias Implementadas
 O banco finest_ecommerce é uma evolução do primeiro modelo, aplicando melhores práticas de modelagem e refinamentos solicitados no desafio:
