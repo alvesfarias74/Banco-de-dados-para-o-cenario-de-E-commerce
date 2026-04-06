@@ -25,8 +25,6 @@ Este projeto faz parte de um desafio de banco de dados SQL, onde foram desenvolv
 │
 └── README.md # Este arquivo
 ```
-text
-
 ---
 
 ## 📊 Versão 1: E-Commerce Base
@@ -50,10 +48,6 @@ O primeiro banco de dados (`ecommerce`) foi desenvolvido para atender às necess
 ### Diagrama ER Reproduzido
 
 ![Diagrama ER - E-Commerce Reproduzido](images/e-commerce_by_alves.png)
-
-### Diagrama ER Refinado
-
-![Diagrama ER - E-Commerce Refinado](images/finest_e-commerce_by_alves.png)
 
 ### Características
 
@@ -131,6 +125,7 @@ CREATE TABLE clients (
     )
 );
 ```
+
 ### 2. Múltiplas Formas de Pagamento
 ```sql
 CREATE TABLE payment (
@@ -143,8 +138,9 @@ CREATE TABLE payment (
     FOREIGN KEY (idClient) REFERENCES clients(idClient)
 );
 ```
+
 ### 3. Entrega com Rastreamento
-sql
+```sql
 CREATE TABLE orders (
     idOrder INT AUTO_INCREMENT PRIMARY KEY,
     idOrderClient INT,
@@ -156,11 +152,14 @@ CREATE TABLE orders (
     deliveryStatus ENUM('Order placed', 'Separating', 'Shipped', 'In transit', 'Delivered') DEFAULT 'Order placed',
     FOREIGN KEY (idOrderClient) REFERENCES clients(idClient)
 );
-Diagrama ER - Versão Refinada
-https://images/finest_ecommerce_er.png
+```
 
-Inserção de Dados (Exemplo)
-sql
+### Diagrama ER Refinado
+
+![Diagrama ER - E-Commerce Refinado](images/finest_e-commerce_by_alves.png)
+
+## Inserção de Dados (Exemplo)
+```sql
 -- Inserindo clientes PF e PJ
 INSERT INTO clients (firstName, middleInit, lastName, cpf, cnpj, address, clientType) VALUES
 ('João', 'S', 'Silva', '12345678901', NULL, 'Rua A, 123', 'PF'),
@@ -171,9 +170,10 @@ INSERT INTO clients (firstName, middleInit, lastName, cpf, cnpj, address, client
 INSERT INTO payment (idClient, paymentType, cardLimit, cardNumber, expirationDate) VALUES
 (1, 'Credit Card', 5000.00, '1111222233334444', '2028-12-31'),
 (1, 'Pix', NULL, NULL, NULL);
-📝 Consultas SQL Implementadas
-Ambas as versões incluem queries com as seguintes cláusulas:
+```
 
+## 📝 Consultas SQL Implementadas
+Ambas as versões incluem queries com as seguintes cláusulas:
 Cláusula	Exemplo de Pergunta
 SELECT simples	Listar todos os produtos disponíveis
 WHERE	Filtrar produtos infantis com avaliação > 4
