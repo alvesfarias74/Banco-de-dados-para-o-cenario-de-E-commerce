@@ -42,10 +42,16 @@ O primeiro banco de dados (`ecommerce`) foi desenvolvido para atender às necess
 - **Seller**: Vendedores terceiros
 - **ProductStorage**: Controle de estoque
 
-### Diagrama ER
+### Diagrama ER Original
 
 ![Diagrama ER - E-Commerce Base](images/e-commerce.png)
+
+### Diagrama ER Reproduzido
+
 ![Diagrama ER - E-Commerce Reproduzido](images/e-commerce_by_alves.png)
+
+### Diagrama ER Refinado
+
 ![Diagrama ER - E-Commerce Refinado](images/finest_e-commerce_by_alves.png)
 
 ### Características
@@ -78,8 +84,10 @@ CREATE TABLE product(
     Evaluation FLOAT DEFAULT 0,
     size VARCHAR(10)
 );
-Exemplo de Consulta
-sql
+```
+### Exemplo de Consulta
+
+```sql
 -- Relação completa de produtos, fornecedores e estoques
 SELECT p.Pname AS produto,
        s.socialName AS fornecedor,
@@ -90,9 +98,10 @@ JOIN productSupplier ps ON p.idProduct = ps.idPsProduct
 JOIN supplier s ON ps.idPsSupplier = s.idSupplier
 LEFT JOIN storageLocation sl ON p.idProduct = sl.idLproduct
 LEFT JOIN productStorage pst ON sl.idLstorage = pst.idProdStorage;
+```
 
+##✨ Versão 2: Finest E-Commerce (Refinado)
 
-✨ Versão 2: Finest E-Commerce (Refinado)
 Melhorias Implementadas
 O banco finest_ecommerce é uma evolução do primeiro modelo, aplicando melhores práticas de modelagem e refinamentos solicitados no desafio:
 
@@ -103,8 +112,9 @@ Pagamento	Uma forma por cliente	Múltiplas formas de pagamento
 Entrega	Sem rastreamento	Código de rastreio e status detalhado
 Validações	Básicas	CHECK constraints (CPF/CNPJ)
 Novas Funcionalidades
-1. Cliente PF e PJ
-sql
+
+###1. Cliente PF e PJ
+```sql
 CREATE TABLE clients (
     idClient INT AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(15),
@@ -119,8 +129,9 @@ CREATE TABLE clients (
         (clientType = 'PJ' AND cnpj IS NOT NULL AND cpf IS NULL)
     )
 );
-2. Múltiplas Formas de Pagamento
-sql
+```
+###2. Múltiplas Formas de Pagamento
+```sql
 CREATE TABLE payment (
     idPayment INT AUTO_INCREMENT PRIMARY KEY,
     idClient INT NOT NULL,
@@ -130,7 +141,8 @@ CREATE TABLE payment (
     expirationDate DATE,
     FOREIGN KEY (idClient) REFERENCES clients(idClient)
 );
-3. Entrega com Rastreamento
+```
+###3. Entrega com Rastreamento
 sql
 CREATE TABLE orders (
     idOrder INT AUTO_INCREMENT PRIMARY KEY,
