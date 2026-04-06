@@ -8,6 +8,7 @@ Este projeto faz parte de um desafio de banco de dados SQL, onde foram desenvolv
 ---
 
 ## 🗂️ Estrutura do Projeto
+```
 ├── ecommerce/ # Versão inicial do banco de dados
 │ ├── schema.sql # Script de criação das tabelas
 │ ├── inserts.sql # Dados de exemplo
@@ -23,7 +24,7 @@ Este projeto faz parte de um desafio de banco de dados SQL, onde foram desenvolv
 │ └── finest_ecommerce_er.png # Diagrama ER da versão refinada
 │
 └── README.md # Este arquivo
-
+```
 text
 
 ---
