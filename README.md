@@ -260,7 +260,6 @@ MySQL Workbench (recomendado para visualização dos diagramas)
 Clone o repositório
 bash
 git clone https://github.com/alvesfarias74/Banco-de-dados-para-o-cenario-de-E-commerce.git
-cd ecommerce-database
 
 ### Execute o script de criação (versão refinada)
 ```sql
@@ -279,27 +278,28 @@ SOURCE finest_ecommerce/queries.sql;
 ```
 
 ### Gerando o Diagrama ER no MySQL Workbench
-Abra o MySQL Workbench
-Conecte ao seu banco de dados
-Vá em Database → Reverse Engineer
-Selecione o schema finest_ecommerce
-Conclua o assistente para gerar o diagrama automaticamente
-Exporte como PNG: File → Export → PNG
+* Abra o MySQL Workbench
+* Conecte ao seu banco de dados
+* Vá em Database → Reverse Engineer
+* Selecione o schema finest_ecommerce
+* Conclua o assistente para gerar o diagrama automaticamente
+* Exporte como PNG: File → Export → PNG
 
 ## 📈 Possíveis Evoluções
-Implementar triggers para atualizar estoque automaticamente
-Criar stored procedures para relatórios gerenciais
-Adicionar índices para otimização de consultas
-Implementar soft delete (flag active)
-Criar views para relatórios frequentes
-Adicionar auditoria com tabelas de log
-Implementar cache de consultas frequentes
+- Implementar triggers para atualizar estoque automaticamente
+- Criar stored procedures para relatórios gerenciais
+- Adicionar índices para otimização de consultas
+- Implementar soft delete (flag active)
+- Criar views para relatórios frequentes
+- Adicionar auditoria com tabelas de log
+- Implementar cache de consultas frequentes
 
 ## 🎯 Aprendizados e Boas Práticas Aplicadas
-Conceito	Aplicação no Projeto
-Normalização	Dados organizados em tabelas relacionadas evitando redundância
-Integridade Referencial	Chaves estrangeiras com ON DELETE/UPDATE CASCADE
-Nomenclatura em Inglês	Padrão internacional para portabilidade do código
+|Conceito | Aplicação no Projeto |
+|---------|----------------------|
+|Normalização | Dados organizados em tabelas relacionadas evitando redundância |
+|Integridade Referencial | Chaves estrangeiras com ON DELETE/UPDATE CASCADE |
+|Nomenclatura em Inglês | Padrão internacional para portabilidade do código |
 Constraints de Validação	CHECK para garantir CPF/CNPJ correto conforme tipo de cliente
 Enums	Status e categorias com valores pré-definidos e controlados
 Relacionamentos N:N	Tabelas de ligação (productSeller, productSupplier, storageLocation)
