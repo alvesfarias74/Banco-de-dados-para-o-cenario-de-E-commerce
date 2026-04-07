@@ -295,16 +295,17 @@ SOURCE finest_ecommerce/queries.sql;
 - Implementar cache de consultas frequentes
 
 ## 🎯 Aprendizados e Boas Práticas Aplicadas
-|Conceito | Aplicação no Projeto |
-|---------|----------------------|
-|Normalização | Dados organizados em tabelas relacionadas evitando redundância |
-|Integridade Referencial | Chaves estrangeiras com ON DELETE/UPDATE CASCADE |
-|Nomenclatura em Inglês | Padrão internacional para portabilidade do código |
-Constraints de Validação	CHECK para garantir CPF/CNPJ correto conforme tipo de cliente
-Enums	Status e categorias com valores pré-definidos e controlados
-Relacionamentos N:N	Tabelas de ligação (productSeller, productSupplier, storageLocation)
-Atributos Derivados	Cálculo de valor total do pedido em tempo de consulta
-📊 Modelo Lógico - Resumo das Tabelas
+| Conceito | Aplicação no Projeto |
+|----------|----------------------|
+| Normalização | Dados organizados em tabelas relacionadas evitando redundância |
+| Integridade Referencial | Chaves estrangeiras com ON DELETE/UPDATE CASCADE |
+| Nomenclatura em Inglês | Padrão internacional para portabilidade do código |
+| Constraints de Validação | CHECK para garantir CPF/CNPJ correto conforme tipo de cliente |
+| Enums | Status e categorias com valores pré-definidos e controlados |
+| Relacionamentos N:N | Tabelas de ligação (productSeller, productSupplier, storageLocation) |
+| Atributos Derivados | Cálculo de valor total do pedido em tempo de consulta |
+
+## 📊 Modelo Lógico - Resumo das Tabelas
 Tabelas Principais
 Tabela	Descrição	Chave Primária
 clients	Cadastro de clientes (PF e PJ)	idClient
