@@ -259,7 +259,7 @@ MySQL Workbench (recomendado para visualização dos diagramas)
 ### Passo a Passo
 Clone o repositório
 bash
-git clone https://github.com/seu-usuario/ecommerce-database.git
+git clone https://github.com/alvesfarias74/Banco-de-dados-para-o-cenario-de-E-commerce.git
 cd ecommerce-database
 
 ### Execute o script de criação (versão refinada)
