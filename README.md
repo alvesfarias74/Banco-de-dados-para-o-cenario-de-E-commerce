@@ -331,7 +331,6 @@ SOURCE finest_ecommerce/queries.sql;
 | storageLocation | Produtos × Estoque |
 
 ## ❓ Perguntas de Negócio Respondidas pelas Queries
-## Consultas SQL
 
 | Pergunta | Query correspondente |
 |----------|----------------------|
@@ -350,33 +349,24 @@ SOURCE finest_ecommerce/queries.sql;
 - **Git & GitHub** - Versionamento e hospedagem do código
 - **Markdown** - Documentação do projeto
 
-📚 Referências
+## 📚 Referências
 MySQL Documentation
-
-Desafio de Projeto - DIO
-
 Best Practices for Database Naming
-
 SQL Constraints Guide
 
-👩‍💻 Autor
+## 👩‍💻 Autor
 Desenvolvido como parte do desafio de banco de dados SQL.
-
 Plataforma: DIO (Digital Innovation One)
-
 Tecnologias: MySQL, SQL Workbench
-
 Data: Abril/2026
 
-📄 Licença
+## 📄 Licença
 Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais informações.
 
-💬 Contato
+## 💬 Contato
 Dúvidas ou sugestões? Fique à vontade para abrir uma Issue no repositório!
 
-🙏 Agradecimentos
+## 🙏 Agradecimentos
 À DIO pelo desafio proposto
-
 À comunidade de desenvolvedores SQL
-
 A todos que contribuíram com feedbacks e sugestões
