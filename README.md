@@ -174,23 +174,28 @@ INSERT INTO payment (idClient, paymentType, cardLimit, cardNumber, expirationDat
 
 ## 📝 Consultas SQL Implementadas
 Ambas as versões incluem queries com as seguintes cláusulas:
-Cláusula	Exemplo de Pergunta
-SELECT simples	Listar todos os produtos disponíveis
-WHERE	Filtrar produtos infantis com avaliação > 4
-Atributos derivados	Calcular valor total do pedido (produtos + frete)
-ORDER BY	Ordenar produtos por avaliação (melhores primeiro)
-HAVING	Clientes que fizeram mais de 1 pedido
-JOINs complexos	Relação produtos × fornecedores × estoques
-Query 1: Recuperação Simples com SELECT
+| Cláusula | Exemplo de Pergunta |
+|----------|---------------------|
+| SELECT simples | Listar todos os produtos disponíveis |
+| WHERE | Filtrar produtos infantis com avaliação > 4 |
+| Atributos derivados | Calcular valor total do pedido (produtos + frete) |
+| ORDER BY | Ordenar produtos por avaliação (melhores primeiro) |
+| HAVING | Clientes que fizeram mais de 1 pedido |
+| JOINs complexos | Relação produtos × fornecedores × estoques |
+
+## Queries SQL
+### Query 1: Recuperação Simples com SELECT
 sql
 -- Pergunta: Quais são todos os produtos disponíveis na loja?
 SELECT idProduct, productName, category, rating FROM product;
-Query 2: Filtros com WHERE
+
+### Query 2: Filtros com WHERE
 sql
 -- Pergunta: Quais produtos são infantis e têm avaliação acima de 4 estrelas?
 SELECT productName, rating FROM product 
 WHERE isKids = TRUE AND rating > 4.0;
-Query 3: Atributos Derivados
+
+### Query 3: Atributos Derivados
 sql
 -- Pergunta: Qual o valor total de cada pedido (produtos + frete)?
 SELECT o.idOrder, 
@@ -201,11 +206,13 @@ FROM orders o
 JOIN productOrder po ON o.idOrder = po.idOrder
 JOIN product p ON po.idProduct = p.idProduct
 GROUP BY o.idOrder;
-Query 4: Ordenação com ORDER BY
+
+### Query 4: Ordenação com ORDER BY
 sql
 -- Pergunta: Produtos ordenados por avaliação (do melhor ao pior)
 SELECT productName, rating FROM product ORDER BY rating DESC;
-Query 5: Filtro com HAVING
+
+### Query 5: Filtro com HAVING
 sql
 -- Pergunta: Clientes que fizeram mais de 1 pedido
 SELECT c.idClient, c.firstName, COUNT(o.idOrder) AS total_pedidos
@@ -213,7 +220,8 @@ FROM clients c
 JOIN orders o ON c.idClient = o.idOrderClient
 GROUP BY c.idClient
 HAVING COUNT(o.idOrder) > 1;
-Query 6: Junção Complexa (Destaque)
+
+### Query 6: Junção Complexa (Destaque)
 sql
 -- Pergunta: Quais produtos cada fornecedor entrega e onde estão estocados?
 SELECT 
@@ -228,13 +236,15 @@ JOIN supplier s ON ps.idSupplier = s.idSupplier
 LEFT JOIN storageLocation sl ON p.idProduct = sl.idProduct
 LEFT JOIN productStorage pst ON sl.idStorage = pst.idStorage
 ORDER BY p.productName;
-Query 7: Verificar se Vendedor também é Fornecedor
+
+### Query 7: Verificar se Vendedor também é Fornecedor
 sql
 -- Pergunta: Existem vendedores que também atuam como fornecedores?
 SELECT s.corporateName AS nome_vendedor, s.cnpj
 FROM seller s
 WHERE s.cnpj IN (SELECT cnpj FROM supplier);
-🚀 Como Executar o Projeto
+
+## 🚀 Como Executar o Projeto
 Pré-requisitos
 MySQL Server 8.0+
 
@@ -271,22 +281,16 @@ Conclua o assistente para gerar o diagrama automaticamente
 
 Exporte como PNG: File → Export → PNG
 
-📈 Possíveis Evoluções
+## 📈 Possíveis Evoluções
 Implementar triggers para atualizar estoque automaticamente
-
 Criar stored procedures para relatórios gerenciais
-
 Adicionar índices para otimização de consultas
-
 Implementar soft delete (flag active)
-
 Criar views para relatórios frequentes
-
 Adicionar auditoria com tabelas de log
-
 Implementar cache de consultas frequentes
 
-🎯 Aprendizados e Boas Práticas Aplicadas
+## 🎯 Aprendizados e Boas Práticas Aplicadas
 Conceito	Aplicação no Projeto
 Normalização	Dados organizados em tabelas relacionadas evitando redundância
 Integridade Referencial	Chaves estrangeiras com ON DELETE/UPDATE CASCADE
