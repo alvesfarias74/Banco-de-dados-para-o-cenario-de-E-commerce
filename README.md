@@ -3,7 +3,7 @@
 
 ## 📋 Descrição do Projeto
 
-Este projeto faz parte de um desafio de banco de dados SQL, onde foram desenvolvidos dois esquemas de banco de dados para um cenário de **e-commerce**. O objetivo foi modelar, implementar e refinar um banco de dados relacional que atenda às necessidades de uma plataforma de vendas online, incluindo gestão de clientes, produtos, pedidos, pagamentos, estoques, fornecedores e vendedores.
+Este projeto faz parte de um desafio de banco de dados SQL, em que foram desenvolvidos dois esquemas de banco de dados para um cenário de **e-commerce**, cujo objetivo foi modelar, implementar e refinar um banco de dados relacional que atenda às necessidades de uma plataforma de vendas online, incluindo gestão de clientes, produtos, pedidos, pagamentos, estoques, fornecedores e vendedores.
 
 ---
 
@@ -185,18 +185,20 @@ Ambas as versões incluem queries com as seguintes cláusulas:
 
 ## Queries SQL
 ### Query 1: Recuperação Simples com SELECT
-sql
+```sql
 -- Pergunta: Quais são todos os produtos disponíveis na loja?
 SELECT idProduct, productName, category, rating FROM product;
+```
 
 ### Query 2: Filtros com WHERE
-sql
+```sql
 -- Pergunta: Quais produtos são infantis e têm avaliação acima de 4 estrelas?
 SELECT productName, rating FROM product 
 WHERE isKids = TRUE AND rating > 4.0;
+```
 
 ### Query 3: Atributos Derivados
-sql
+```sql
 -- Pergunta: Qual o valor total de cada pedido (produtos + frete)?
 SELECT o.idOrder, 
        SUM(po.quantity * p.rating) AS subtotal_produtos,
@@ -206,23 +208,26 @@ FROM orders o
 JOIN productOrder po ON o.idOrder = po.idOrder
 JOIN product p ON po.idProduct = p.idProduct
 GROUP BY o.idOrder;
+```
 
 ### Query 4: Ordenação com ORDER BY
-sql
+```sql
 -- Pergunta: Produtos ordenados por avaliação (do melhor ao pior)
 SELECT productName, rating FROM product ORDER BY rating DESC;
+```
 
 ### Query 5: Filtro com HAVING
-sql
+```sql
 -- Pergunta: Clientes que fizeram mais de 1 pedido
 SELECT c.idClient, c.firstName, COUNT(o.idOrder) AS total_pedidos
 FROM clients c
 JOIN orders o ON c.idClient = o.idOrderClient
 GROUP BY c.idClient
 HAVING COUNT(o.idOrder) > 1;
+```
 
 ### Query 6: Junção Complexa (Destaque)
-sql
+```sql
 -- Pergunta: Quais produtos cada fornecedor entrega e onde estão estocados?
 SELECT 
     p.productName AS produto,
@@ -236,49 +241,49 @@ JOIN supplier s ON ps.idSupplier = s.idSupplier
 LEFT JOIN storageLocation sl ON p.idProduct = sl.idProduct
 LEFT JOIN productStorage pst ON sl.idStorage = pst.idStorage
 ORDER BY p.productName;
+```
 
 ### Query 7: Verificar se Vendedor também é Fornecedor
-sql
+```sql
 -- Pergunta: Existem vendedores que também atuam como fornecedores?
 SELECT s.corporateName AS nome_vendedor, s.cnpj
 FROM seller s
 WHERE s.cnpj IN (SELECT cnpj FROM supplier);
+```
 
 ## 🚀 Como Executar o Projeto
-Pré-requisitos
+### Pré-requisitos
 MySQL Server 8.0+
-
 MySQL Workbench (recomendado para visualização dos diagramas)
 
-Passo a Passo
+### Passo a Passo
 Clone o repositório
-
 bash
 git clone https://github.com/seu-usuario/ecommerce-database.git
 cd ecommerce-database
-Execute o script de criação (versão refinada)
 
-sql
+### Execute o script de criação (versão refinada)
+```sql
 SOURCE finest_ecommerce/schema.sql;
-Carregue os dados de exemplo
+```
 
-sql
+### Carregue os dados de exemplo
+```sql
 SOURCE finest_ecommerce/inserts.sql;
-Teste as consultas
+```
 
-sql
+### Teste as consultas
+
+```sql
 SOURCE finest_ecommerce/queries.sql;
-Gerando o Diagrama ER no MySQL Workbench
+```
+
+### Gerando o Diagrama ER no MySQL Workbench
 Abra o MySQL Workbench
-
 Conecte ao seu banco de dados
-
 Vá em Database → Reverse Engineer
-
 Selecione o schema finest_ecommerce
-
 Conclua o assistente para gerar o diagrama automaticamente
-
 Exporte como PNG: File → Export → PNG
 
 ## 📈 Possíveis Evoluções
