@@ -80,6 +80,7 @@ CREATE TABLE product(
     size VARCHAR(10)
 );
 ```
+
 ### Exemplo de Consulta
 
 ```sql
@@ -97,7 +98,7 @@ LEFT JOIN productStorage pst ON sl.idLstorage = pst.idProdStorage;
 
 ## ✨ Versão 2: Finest E-Commerce (Refinado)
 
-Melhorias Implementadas
+### Melhorias Implementadas
 O banco finest_ecommerce é uma evolução do primeiro modelo, aplicando melhores práticas de modelagem e refinamentos solicitados no desafio:
 
 Aspecto	Versão Original	Versão Refinada
@@ -155,7 +156,6 @@ CREATE TABLE orders (
 ```
 
 ### Diagrama ER Refinado
-
 ![Diagrama ER - E-Commerce Refinado](images/finest_e-commerce_by_alves.png)
 
 ## Inserção de Dados (Exemplo)
@@ -184,6 +184,7 @@ Ambas as versões incluem queries com as seguintes cláusulas:
 | JOINs complexos | Relação produtos × fornecedores × estoques |
 
 ## Queries SQL
+
 ### Query 1: Recuperação Simples com SELECT
 ```sql
 -- Pergunta: Quais são todos os produtos disponíveis na loja?
@@ -252,6 +253,7 @@ WHERE s.cnpj IN (SELECT cnpj FROM supplier);
 ```
 
 ## 🚀 Como Executar o Projeto
+
 ### Pré-requisitos
 MySQL Server 8.0+
 MySQL Workbench (recomendado para visualização dos diagramas)
@@ -306,38 +308,47 @@ SOURCE finest_ecommerce/queries.sql;
 | Atributos Derivados | Cálculo de valor total do pedido em tempo de consulta |
 
 ## 📊 Modelo Lógico - Resumo das Tabelas
-Tabelas Principais
-Tabela	Descrição	Chave Primária
-clients	Cadastro de clientes (PF e PJ)	idClient
-product	Catálogo de produtos	idProduct
-orders	Pedidos realizados	idOrder
-payment	Formas de pagamento dos clientes	idPayment
-supplier	Fornecedores de produtos	idSupplier
-seller	Vendedores terceiros	idSeller
-productStorage	Locais de estoque	idStorage
-Tabelas de Relacionamento (N:N)
-Tabela	Relacionamento
-productOrder	Produtos × Pedidos
-productSupplier	Produtos × Fornecedores
-productSeller	Produtos × Vendedores
-storageLocation	Produtos × Estoque
-❓ Perguntas de Negócio Respondidas pelas Queries
-Pergunta	Query correspondente
-Quantos pedidos foram feitos por cada cliente?	Query com HAVING (clientes com >1 pedido)
-Algum vendedor também é fornecedor?	Subconsulta comparando CNPJ
-Relação de produtos, fornecedores e estoques	Junção complexa (6 tabelas)
-Qual o valor total de cada pedido?	Atributo derivado com SUM
-Quais os produtos mais bem avaliados?	ORDER BY rating DESC
-Produtos infantis com boa avaliação?	WHERE com isKids e rating
-Qual a forma de pagamento mais usada?	(Pode ser adicionada facilmente)
-🛠️ Tecnologias Utilizadas
-MySQL - Sistema de Gerenciamento de Banco de Dados
 
-MySQL Workbench - Modelagem e execução de queries
+### Tabelas Principais
 
-Git & GitHub - Versionamento e hospedagem do código
+| Tabela | Descrição | Chave Primária |
+|--------|-----------|----------------|
+| clients | Cadastro de clientes (PF e PJ) | idClient |
+| product | Catálogo de produtos | idProduct |
+| orders | Pedidos realizados | idOrder |
+| payment | Formas de pagamento dos clientes | idPayment |
+| supplier | Fornecedores de produtos | idSupplier |
+| seller | Vendedores terceiros | idSeller |
+| productStorage | Locais de estoque | idStorage |
 
-Markdown - Documentação do projeto
+## Tabelas de Relacionamento (N:N)
+
+| Tabela | Relacionamento |
+|--------|----------------|
+| productOrder | Produtos × Pedidos |
+| productSupplier | Produtos × Fornecedores |
+| productSeller | Produtos × Vendedores |
+| storageLocation | Produtos × Estoque |
+
+## ❓ Perguntas de Negócio Respondidas pelas Queries
+## Consultas SQL
+
+| Pergunta | Query correspondente |
+|----------|----------------------|
+| Quantos pedidos foram feitos por cada cliente? | Query com HAVING (clientes com >1 pedido) |
+| Algum vendedor também é fornecedor? | Subconsulta comparando CNPJ |
+| Relação de produtos, fornecedores e estoques | Junção complexa (6 tabelas) |
+| Qual o valor total de cada pedido? | Atributo derivado com SUM |
+| Quais os produtos mais bem avaliados? | ORDER BY rating DESC |
+| Produtos infantis com boa avaliação? | WHERE com isKids e rating |
+| Qual a forma de pagamento mais usada? | (Pode ser adicionada facilmente) |
+
+## 🛠️ Tecnologias Utilizadas
+
+- **MySQL** - Sistema de Gerenciamento de Banco de Dados
+- **MySQL Workbench** - Modelagem e execução de queries
+- **Git & GitHub** - Versionamento e hospedagem do código
+- **Markdown** - Documentação do projeto
 
 📚 Referências
 MySQL Documentation
